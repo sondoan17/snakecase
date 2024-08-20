@@ -7,6 +7,7 @@ import {
   getKindeServerSession,
   RegisterLink,
   LoginLink,
+  LogoutLink,
 } from "@kinde-oss/kinde-auth-nextjs/server";
 
 const Navbar = async () => {
@@ -23,15 +24,14 @@ const Navbar = async () => {
           <div className="h-full flex items-center space-x-4">
             {user ? (
               <>
-                <Link
-                  href={"/api/auth/logout"}
+                <LogoutLink
                   className={buttonVariants({
                     size: "sm",
                     variant: "ghost",
                   })}
                 >
                   Sign out
-                </Link>
+                </LogoutLink>
 
                 {isAdmin ? (
                   <Link
