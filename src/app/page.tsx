@@ -39,7 +39,7 @@ export default function Home() {
                     Modern iPhone models supported
                   </li>
                 </div>
-              </ul>
+              </ul> 
 
               <div className="mt-12 flex flex-col sm:flex-row items-center sm:items-start gap-5">
                 <div className="flex -space-x-4">
