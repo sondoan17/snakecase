@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { MaxWidthWrapper, Phone } from "../components/componentsIndex";
+import { MaxWidthWrapper, Phone, Reviews } from "../components/componentsIndex";
 import { Check, Star } from "lucide-react";
 import Image from "next/image";
 import { Icons } from "../components/Icons";
@@ -121,8 +121,91 @@ export default function Home() {
               </span>{" "}
               say
             </h2>
+            <img
+              src="/snake-2.png"
+              alt="value section"
+              className="w-24 order-0 lg:order-2"
+            />
+          </div>
+          <div className="mx-auto grid max-w-2xl grid-cols-1 px-4 lg:mx-0 lg:max-w-none lg:grid-cols-2 gap-y-16">
+            {/* first user review */}
+            <div className="flex flex-auto flex-col gap-4 lg:pr-8 xl:pr-20">
+              <div className="flex gap-0.5 mb-2">
+                <Star className="h-4 w-4 text-green-600 fill-green-600" />
+                <Star className="h-4 w-4 text-green-600 fill-green-600" />
+                <Star className="h-4 w-4 text-green-600 fill-green-600" />
+                <Star className="h-4 w-4 text-green-600 fill-green-600" />
+                <Star className="h-4 w-4 text-green-600 fill-green-600" />
+              </div>
+              <div className="text-lg leading-8">
+                <p>
+                  &quot;The case feels durable and I even got a compliment on
+                  the design. Had the case for two and a half months now -{" "}
+                  <span className="p-0.5 bg-slate-800 text-white">
+                    the image is super clear
+                  </span>
+                  , on the case I had before, the image started fading into
+                  yellow-ish color after a couple weeks.&quot;
+                </p>
+              </div>
+              <div className="flex gap-4 mt-2">
+                <img
+                  src="/users/user-1.png"
+                  alt="user"
+                  className="rounded-full w-12 h-12 object-cover"
+                />
+                <div className="flex flex-col gap-0.5">
+                  <p className="font-semibold">John Doe</p>
+                  <div className="flex gap-1.5 items-center text-zinc-600">
+                    <Check className="h-4 w-4 stroke-[3px] text-green-600" />
+                    <p className="text-sm">Verified Buyer</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* second user review */}
+            <div className="flex flex-auto flex-col gap-4 lg:pr-8 xl:pr-20">
+              <div className="flex gap-0.5 mb-2">
+                <Star className="h-4 w-4 text-green-600 fill-green-600" />
+                <Star className="h-4 w-4 text-green-600 fill-green-600" />
+                <Star className="h-4 w-4 text-green-600 fill-green-600" />
+                <Star className="h-4 w-4 text-green-600 fill-green-600" />
+                <Star className="h-4 w-4 text-green-600 fill-green-600" />
+              </div>
+              <div className="text-lg leading-8">
+                <p>
+                  &quot;I&apos;m impressed with the quality of this phone case.
+                  The design is eye-catching and has held up well over time.
+                  After using it for several months,{" "}
+                  <span className="p-0.5 bg-slate-800 text-white">
+                    the image remains crisp and vibrant
+                  </span>
+                  . This is a significant improvement over my previous case,
+                  where the design began to fade and discolor within just a few
+                  weeks of use.&quot;
+                </p>
+              </div>
+              <div className="flex gap-4 mt-2">
+                <img
+                  src="/users/user-4.jpg"
+                  alt="user"
+                  className="rounded-full w-12 h-12 object-cover"
+                />
+                <div className="flex flex-col gap-0.5">
+                  <p className="font-semibold">Sam</p>
+                  <div className="flex gap-1.5 items-center text-zinc-600">
+                    <Check className="h-4 w-4 stroke-[3px] text-green-600" />
+                    <p className="text-sm">Verified Buyer</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </MaxWidthWrapper>
+
+        <div className="pt-16">
+          <Reviews />
+        </div>
       </section>
     </div>
   );
