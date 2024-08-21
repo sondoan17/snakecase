@@ -14,7 +14,17 @@ const PHONES = [
   "/testimonials/5.jpg",
   "/testimonials/6.jpg",
 ];
-function ReviewColumn({ reviews, className, reviewClassName, msPerPixel }: { reviews: string[], className: string, reviewClassName?: (reviewIndex: number) => string, msPerPixel: number }) {
+function ReviewColumn({
+  reviews,
+  className,
+  reviewClassName,
+  msPerPixel,
+}: {
+  reviews: string[];
+  className: string;
+  reviewClassName?: (reviewIndex: number) => string;
+  msPerPixel: number;
+}) {
   const columnRef = useRef<HTMLDivElement | null>(null);
   const [collumnHeight, setCollumnHeight] = useState(0);
   const duration = `${collumnHeight * msPerPixel}ms`;
@@ -27,13 +37,22 @@ function ReviewColumn({ reviews, className, reviewClassName, msPerPixel }: { rev
     resizeObserver.observe(columnRef.current);
     return () => resizeObserver.disconnect();
   }, []);
-  return <div ref={columnRef} className={cn('animate-marquee space-y-8 py-4', className)} style={{ '--marquee-duration': duration } as React.CSSProperties}>
-    {reviews.concat(reviews).map((imgSrc, index) => (
-      <Review key={index} imgSrc={imgSrc} className={reviewClassName?.(index % reviews.length)} />
-    ))}
-  </div>
+  return (
+    <div
+      ref={columnRef}
+      className={cn("animate-marquee space-y-8 py-4", className)}
+      style={{ "--marquee-duration": duration } as React.CSSProperties}
+    >
+      {reviews.concat(reviews).map((imgSrc, index) => (
+        <Review
+          key={index}
+          imgSrc={imgSrc}
+          className={reviewClassName?.(index % reviews.length)}
+        />
+      ))}
+    </div>
+  );
 }
-
 
 function splitArray<T>(array: Array<T>, numParts: number) {
   const result: Array<Array<T>> = [];
@@ -54,14 +73,24 @@ interface ReviewProps extends HTMLAttributes<HTMLDivElement> {
 
 function Review({ imgSrc, className, ...props }: ReviewProps) {
   return (
-    <div className={cn('animate-fade-in rounded-[2.25rem] bg-white p-6 opacity-0 shadow-xl shadow-slate-900/5', className)} style={{ animationDelay }} {...props}>
+    <div
+      className={cn(
+        "animate-fade-in rounded-[2.25rem] bg-white p-6 opacity-0 shadow-xl shadow-slate-900/5",
+        className
+      )}
+      style={{ animationDelay }}
+      {...props}
+    >
       <Phone imgSrc={imgSrc} dark={false} />
     </div>
   );
 }
 
-const POSSIBLE_ANIMATION_DELAY = ['0s', '0.1s', '0.2s', '0.3s', '0.4s', '0.5s']
-const animationDelay = POSSIBLE_ANIMATION_DELAY[Math.floor(Math.random() * POSSIBLE_ANIMATION_DELAY.length)]
+const POSSIBLE_ANIMATION_DELAY = ["0s", "0.1s", "0.2s", "0.3s", "0.4s", "0.5s"];
+const animationDelay =
+  POSSIBLE_ANIMATION_DELAY[
+    Math.floor(Math.random() * POSSIBLE_ANIMATION_DELAY.length)
+  ];
 
 function ReviewGrid() {
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -77,9 +106,30 @@ function ReviewGrid() {
     >
       {isInView ? (
         <>
-          <ReviewColumn reviews={[...column1, ...column3.flat(), ...column2]} msPerPixel={10} className="" reviewClassName={(index) => cn({ 'md:hidden': index >= column1.length + column3[0].length, 'lg:hidden': index >= column1.length, })} />
-          <ReviewColumn reviews={[...column2, ...column3[1]]} msPerPixel={15} className="hidden md:block" reviewClassName={(index) => index >= column2.length ? 'lg:hidden' : ''} />
-          <ReviewColumn reviews={column3.flat()} msPerPixel={10} className="hidden md:block" />
+          <ReviewColumn
+            reviews={[...column1, ...column3.flat(), ...column2]}
+            msPerPixel={10}
+            className=""
+            reviewClassName={(index) =>
+              cn({
+                "md:hidden": index >= column1.length + column3[0].length,
+                "lg:hidden": index >= column1.length,
+              })
+            }
+          />
+          <ReviewColumn
+            reviews={[...column2, ...column3[1]]}
+            msPerPixel={15}
+            className="hidden md:block"
+            reviewClassName={(index) =>
+              index >= column2.length ? "lg:hidden" : ""
+            }
+          />
+          <ReviewColumn
+            reviews={column3.flat()}
+            msPerPixel={10}
+            className="hidden md:block"
+          />
         </>
       ) : null}
     </div>
