@@ -1,8 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import { MaxWidthWrapper, Phone, Reviews } from "../components/componentsIndex";
-import { Check, Star } from "lucide-react";
+import { ArrowRight, Check, Star } from "lucide-react";
 import Image from "next/image";
 import { Icons } from "../components/Icons";
+import Link from "next/link";
+import { buttonVariants } from "@/components/ui/button";
 
 export default function Home() {
   return (
@@ -229,9 +231,36 @@ export default function Home() {
                 alt=""
                 className="absolute top-[25rem] md:top-1/2 -translate-y-1/2 z-10 left-1/2 -translate-x-1/2 rotate-90 md:rotate-0"
               />
-              <div className="relative h-80 md:h-full w-full md:justify-self-end max-w-sm rounded-xl bg-gray-900/5 ring-inset ring-gray-900/10 lg:rounded-2xl"></div>
+              <div className="relative h-80 md:h-full w-full md:justify-self-end max-w-sm rounded-xl bg-gray-900/5 ring-inset ring-gray-900/10 lg:rounded-2xl">
+                <img src="/horse.jpg" alt="" className="rounded-md object-cover bg-white shadow-2xl ring-1 ring-gray-900/10 h-full w-full" />
+              </div>
+              <Phone className="w-60" imgSrc="/horse_phone.jpg" dark={false} />
             </div>
           </div>
+          <ul className="mx-auto mt-12 max-w-prose sm:text-lg space-y-2 w-fit">
+            <li className="w-fit">
+              <Check className="h-5 w-5 text-green-600 inline mr-1.5" />
+              High-quality silicon material
+            </li>
+            <li className="w-fit">
+              <Check className="h-5 w-5 text-green-600 inline mr-1.5" />
+              Scratch- and fingerprint resistant coating
+            </li>
+            <li className="w-fit">
+              <Check className="h-5 w-5 text-green-600 inline mr-1.5" />
+              Wireless charging compatible
+            </li>
+            <li className="w-fit">
+              <Check className="h-5 w-5 text-green-600 inline mr-1.5" />
+              1 year print warranty
+            </li>
+            <div className="flex justify-center">
+              <Link className={buttonVariants({
+                size: 'lg',
+                className: 'mx-auto mt-8'
+              })} href={"/configure/upload"}>Create your own case now <ArrowRight /></Link>
+            </div>
+          </ul>
         </MaxWidthWrapper>
       </section>
     </div>
