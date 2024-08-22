@@ -37,6 +37,7 @@ function ReviewColumn({
     resizeObserver.observe(columnRef.current);
     return () => resizeObserver.disconnect();
   }, []);
+
   return (
     <div
       ref={columnRef}
@@ -54,7 +55,7 @@ function ReviewColumn({
   );
 }
 
-function splitArray<T>(array: Array<T>, numParts: number) {
+function splitArray<T>(array: Array<T>, numParts: number) { //--- splits an array into a specified number of parts.
   const result: Array<Array<T>> = [];
 
   for (let i = 0; i < array.length; i++) {
@@ -89,7 +90,7 @@ function Review({ imgSrc, className, ...props }: ReviewProps) {
 const POSSIBLE_ANIMATION_DELAY = ["0s", "0.1s", "0.2s", "0.3s", "0.4s", "0.5s"];
 const animationDelay =
   POSSIBLE_ANIMATION_DELAY[
-    Math.floor(Math.random() * POSSIBLE_ANIMATION_DELAY.length)
+  Math.floor(Math.random() * POSSIBLE_ANIMATION_DELAY.length)
   ];
 
 function ReviewGrid() {
@@ -99,6 +100,7 @@ function ReviewGrid() {
   const column1 = columns[0];
   const column2 = columns[1];
   const column3 = splitArray(columns[2], 2);
+
   return (
     <div
       ref={containerRef}
@@ -127,11 +129,14 @@ function ReviewGrid() {
           />
           <ReviewColumn
             reviews={column3.flat()}
-            msPerPixel={10}
+            msPerPixel={11}
             className="hidden md:block"
           />
         </>
       ) : null}
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-slate-100" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-slate-100" />
+
     </div>
   );
 }

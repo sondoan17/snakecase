@@ -139,13 +139,15 @@ export default function Home() {
               </div>
               <div className="text-lg leading-8">
                 <p>
-                  &quot;The case feels durable and I even got a compliment on
-                  the design. Had the case for two and a half months now -{" "}
+                  &quot;The case feels incredibly durable and I even got several
+                  compliments on the unique design. I&apos;ve had the case for
+                  two and a half months now, and -{" "}
                   <span className="p-0.5 bg-slate-800 text-white">
-                    the image is super clear
+                    the image is still super clear and vibrant
                   </span>
-                  , on the case I had before, the image started fading into
-                  yellow-ish color after a couple weeks.&quot;
+                  . In contrast, on the case I had before, the image started
+                  fading into a yellow-ish color after just a couple of weeks.
+                  This one&apos;s definitely superior.&quot;
                 </p>
               </div>
               <div className="flex gap-4 mt-2">
@@ -192,7 +194,7 @@ export default function Home() {
                   className="rounded-full w-12 h-12 object-cover"
                 />
                 <div className="flex flex-col gap-0.5">
-                  <p className="font-semibold">Sam</p>
+                  <p className="font-semibold">Jimmy</p>
                   <div className="flex gap-1.5 items-center text-zinc-600">
                     <Check className="h-4 w-4 stroke-[3px] text-green-600" />
                     <p className="text-sm">Verified Buyer</p>
@@ -206,6 +208,31 @@ export default function Home() {
         <div className="pt-16">
           <Reviews />
         </div>
+      </section>
+      <section>
+        <MaxWidthWrapper className="py-24">
+          <div className="mb-12 px-6 lg:px-8">
+            <div className="mx-auto max-w-2xl sm:text-center">
+              <h2 className="order-1 mt-2 tracking-tight text-center text-balance !leading-tight font-bold text-5xl md:text-6xl text-gray-900">
+                Upload your photo and get{" "}
+                <span className="relative px-2 bg-green-600 text-white">
+                  your own case
+                </span>{" "}
+                now
+              </h2>
+            </div>
+          </div>
+          <div className="mx-auto max-w-6xl px-6 lg:px-8">
+            <div className="relative flex flex-col items-center md:grid grid-cols-2 gap-40">
+              <img
+                src="/arrow.png"
+                alt=""
+                className="absolute top-[25rem] md:top-1/2 -translate-y-1/2 z-10 left-1/2 -translate-x-1/2 rotate-90 md:rotate-0"
+              />
+              <div className="relative h-80 md:h-full w-full md:justify-self-end max-w-sm rounded-xl bg-gray-900/5 ring-inset ring-gray-900/10 lg:rounded-2xl"></div>
+            </div>
+          </div>
+        </MaxWidthWrapper>
       </section>
     </div>
   );
