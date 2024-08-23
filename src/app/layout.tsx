@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
-
+import { Inter } from "next/font/google";
 import "./globals.css";
-import { Navbar } from "../components/componentsIndex";
+import { Navbar, Footer } from "../components/componentsIndex";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "SnakeCase",
@@ -16,9 +18,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
+      <body className={inter.className}>
         <Navbar />
-        {children}
+
+        <main className="flex flex-col h-[calc(100vh-3.5rem-1px)]">
+          <div className="flex flex-col flex-1">{children}</div>
+          <Footer />
+        </main>
       </body>
     </html>
   );
