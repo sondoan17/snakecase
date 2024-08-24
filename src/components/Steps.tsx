@@ -38,7 +38,7 @@ const Steps = () => {
             <div>
               <span
                 className={cn(
-                  "aboslute left-0 top-0 h-full w-1 bg-zinc-400 lg:bottom-0 lg:top-auto lg:h-1 lg:w-full",
+                  "absolute left-0 top-0 h-full w-1 bg-zinc-400 lg:bottom-0 lg:top-auto lg:h-1 lg:w-full",
                   {
                     "bg-zinc-700": isCurrent,
                     "bg-primary": isCompleted,
@@ -80,7 +80,7 @@ const Steps = () => {
                 </span>
               </span>
 
-              {/* seperator */}
+              {/* separator */}
               {i !== 0 ? (
                 <div className="absolute inset-0 hidden w-3 lg:block">
                   <svg
