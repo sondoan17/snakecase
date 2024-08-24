@@ -39,17 +39,20 @@ const Steps = () => {
               <span
                 className={cn(
                   "aboslute left-0 top-0 h-full w-1 bg-zinc-400 lg:bottom-0 lg:top-auto lg:h-1 lg:w-full",
-                  { "bg-zinc-700": isCurrent, "bg-primary": isCompleted }
+                  {
+                    "bg-zinc-700": isCurrent,
+                    "bg-primary": isCompleted,
+                  }
                 )}
                 aria-hidden="true"
               />
               <span
                 className={cn(
                   i !== 0 ? "lg:pl-9" : "",
-                  "flex items-center px-6, py-4 text-sm font-medium"
+                  "flex items-center px-6 py-4 text-sm font-medium"
                 )}
               >
-                <span className="flex shrink-0">
+                <span className="flex-shrink-0">
                   <img
                     src={imgPath}
                     alt={step.name}
