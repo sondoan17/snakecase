@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { MaxWidthWrapper, Phone, Reviews } from "../components/componentsIndex";
 import { ArrowRight, Check, Star } from "lucide-react";
-import Image from "next/image";
+
 import { Icons } from "../components/Icons";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";

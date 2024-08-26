@@ -38,11 +38,13 @@ const DesignConfigurator = ({
     model: (typeof MODEL.options)[number];
     materials: (typeof MATERIAL.options)[number];
     finish: (typeof FINISH.options)[number];
+    template: string;
   }>({
     color: COLOR[0],
     model: MODEL.options[0],
     materials: MATERIAL.options[0],
     finish: FINISH.options[0],
+    template: MODEL.options[0].template,
   });
   return (
     <div className="relative mt-20 grid grid-cols-3 mb-20 pb-20">
@@ -54,7 +56,7 @@ const DesignConfigurator = ({
           >
             <NextImage
               alt="phone img"
-              src="/phone-template.png"
+              src={options.template}
               className="pointer-events-none z-50 select-none"
               fill
             />
@@ -158,7 +160,11 @@ const DesignConfigurator = ({
                             { "bg-zinc-100": options.model === option }
                           )}
                           onClick={() => {
-                            setOptions((prev) => ({ ...prev, model: option }));
+                            setOptions((prev) => ({
+                              ...prev,
+                              model: option,
+                              template: option.template,
+                            }));
                           }}
                         >
                           <CheckIcon

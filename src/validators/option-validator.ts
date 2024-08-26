@@ -15,22 +15,91 @@ export const COLOR = [
 export const MODEL = {
   name: "models",
   options: [
-    { label: "Iphone X/Xs", value: "iphone-x" },
-    { label: "Iphone XR", value: "iphone-xr" },
-    { label: "Iphone Xs Max", value: "iphone-xs-max" },
-    { label: "Iphone 11/11 Pro", value: "iphone11" },
-    { label: "Iphone 11 Pro Max", value: "iphone11-pro-max" },
-    { label: "Iphone 12/12 Pro", value: "iphone12" },
-    { label: "Iphone 12 Mini", value: "iphone12-mini" },
-    { label: "Iphone 12 Pro Max", value: "iphone12-pro-max" },
-    { label: "Iphone 13/13 Pro", value: "iphone13" },
-    { label: "Iphone 13 Mini", value: "iphone13-mini" },
-    { label: "Iphone 13 Pro Max", value: "iphone13-pro-max" },
-    { label: "Iphone 14/14 Pro", value: "iphone14" },
-    { label: "Iphone 14 Plus", value: "iphone14-plus" },
-    { label: "Iphone 14 Pro Max", value: "iphone14-pro-max" },
-    { label: "Iphone 15/15 Pro", value: "iphone15" },
-    { label: "Iphone 15 Pro Max", value: "iphone15-pro-max" },
+    {
+      label: "Iphone 7/8 Plus",
+      value: "iphone-8-plus",
+      template: "/iphone-7-8-plus-template.png",
+    },
+    {
+      label: "Iphone X/Xs",
+      value: "iphone-x",
+      template: "/iphone-x-template.png",
+    },
+    {
+      label: "Iphone XR",
+      value: "iphone-x",
+      template: "/iphone-x-template.png",
+    },
+    {
+      label: "Iphone Xs Max",
+      value: "iphone-x",
+      template: "/iphone-x-template.png",
+    },
+    {
+      label: "Iphone 11/11 Pro",
+      value: "iphone-11",
+      template: "/iphone-11-template.png",
+    },
+    {
+      label: "Iphone 11 Pro Max",
+      value: "iphone-11",
+      template: "/iphone-11-template.png",
+    },
+    {
+      label: "Iphone 12/12 Pro",
+      value: "iphone-12",
+      template: "/iphone-12-template.png",
+    },
+    {
+      label: "Iphone 12 Mini",
+      value: "iphone-12-mini",
+      template: "/iphone-12-mini-template.png",
+    },
+    {
+      label: "Iphone 12 Pro Max",
+      value: "iphone-12",
+      template: "/iphone-12-template.png",
+    },
+    {
+      label: "Iphone 13/13 Pro",
+      value: "iphone-13",
+      template: "/iphone-13-template.png",
+    },
+    {
+      label: "Iphone 13 Mini",
+      value: "iphone-13-mini",
+      template: "/iphone-13-mini-template.png",
+    },
+    {
+      label: "Iphone 13 Pro Max",
+      value: "iphone-13",
+      template: "/iphone-13-template.png",
+    },
+    {
+      label: "Iphone 14/14 Pro",
+      value: "iphone-14",
+      template: "/iphone-14-template.png",
+    },
+    {
+      label: "Iphone 14 Plus",
+      value: "iphone-14",
+      template: "/iphone-14-template.png",
+    },
+    {
+      label: "Iphone 14 Pro Max",
+      value: "iphone-14",
+      template: "/iphone-14-template.png",
+    },
+    {
+      label: "Iphone 15/15 Pro",
+      value: "iphone-15",
+      template: "/iphone-15-template.png",
+    },
+    {
+      label: "Iphone 15 Pro Max",
+      value: "iphone-15",
+      template: "/iphone-15-template.png",
+    },
   ],
 } as const;
 
