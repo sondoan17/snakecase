@@ -6,11 +6,53 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+enum OrderStatus {
+  fulfilled
+  shipped
+  awaiting_shipment
+}
+enum CaseColor {
+  black
+  blue
+  rose
+  green
+}
+enum PhoneModel {
+  iphone78plus
+  iphonex
+  iphonexr
+  iphonexsmax
+  iphone11
+  iphone11promax
+  iphone12
+  iphone12promax
+  iphone12mini
+  iphone13
+  iphone13promax
+  iphone13mini
+  iphone14
+  iphone14plus
+  iphone14promax
+  iphone15
+  iphone15promax
+}
+enum CaseMaterial {
+  silicone
+  polycarbonate
+}
+enum CaseFinish {
+  smooth
+  textured
+}
 
 model Configuration {
   id              String  @id @default(cuid())
   width           Int
   height          Int
   imageUrl        String
+  color           CaseColor?
+  model           PhoneModel?
+  material        CaseMaterial?
+  finish          CaseFinish?
   croppedImageUrl String?
 }
