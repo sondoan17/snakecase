@@ -1,13 +1,6 @@
 "use client";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
-import React, { useRef, useState } from "react";
-import NextImage from "next/image";
-import { cn, formatPrice } from "@/lib/utils";
-import { Rnd } from "react-rnd";
-import HandleComponent from "@/components/ui/HandleComponent";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { RadioGroup } from "@headlessui/react";
-import { COLOR, FINISH, MATERIAL, MODEL } from "@/validators/option-validator";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import {
@@ -16,10 +9,20 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
+import { useToast } from "@/components/ui/use-toast";
+import React, { useRef, useState } from "react";
+import NextImage from "next/image";
+import { useRouter } from "next/navigation";
+import { Rnd } from "react-rnd";
+import { RadioGroup } from "@headlessui/react";
+import { useMutation } from "@tanstack/react-query";
+import HandleComponent from "@/components/ui/HandleComponent";
+import { cn, formatPrice } from "@/lib/utils";
+import { COLOR, FINISH, MATERIAL, MODEL } from "@/validators/option-validator";
+import { saveConfig as _saveConfig, SaveConfigArgs } from "./actions";
+import { useUploadThing } from "@/lib/uploadthing";
 import { ArrowRight, CheckIcon, ChevronDownIcon } from "lucide-react";
 import { BASE_PRICE } from "@/config/products";
-import { useUploadThing } from "@/lib/uploadthing";
-import { useToast } from "@/components/ui/use-toast";
 
 interface DesignConfiguratorProps {
   configId: string;
@@ -36,6 +39,23 @@ const DesignConfigurator = ({
   imageDimensions,
 }: DesignConfiguratorProps) => {
   const { toast } = useToast();
+  const router = useRouter();
+  const { mutate: saveConfig } = useMutation({
+    mutationKey: ["save-config"],
+    mutationFn: async (args: SaveConfigArgs) => {
+      await Promise.all([saveConfiguration(), _saveConfig(args)]);
+    },
+    onError: (error) => {
+      toast({
+        title: "Error",
+        description: "Failed to save configuration, please try again",
+        variant: "destructive",
+      });
+    },
+    onSuccess: () => {
+      router.push(`/configure/preview?id=${configId}`);
+    },
+  });
   const [options, setOptions] = useState<{
     color: (typeof COLOR)[number];
     model: (typeof MODEL.options)[number];
@@ -58,7 +78,7 @@ const DesignConfigurator = ({
     y: 205,
   });
 
-  const phoneCaseRef = useRef<HTMLDivElement>(null);
+  const phoneCaseRef = useRef<HTMLImageElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const { startUpload } = useUploadThing("imageUploader");
@@ -133,14 +153,13 @@ const DesignConfigurator = ({
             ratio={896 / 1831}
             className="pointer-events-none relative z-50 aspect-[896/1831] w-full"
           >
-            <div ref={phoneCaseRef}>
-              <NextImage
-                alt="phone img"
-                src={options.template}
-                className="pointer-events-none z-50 select-none"
-                fill
-              />
-            </div>
+            <NextImage
+              ref={phoneCaseRef}
+              alt="phone img"
+              src={options.template}
+              className="pointer-events-none z-50 select-none"
+              fill
+            />
           </AspectRatio>
           <div className="absolute z-40 inset-0 left-[3px] top-px right-[3px] bottom-px rounded-[32px] shadow-[0_0_0_99999px_rgba(229,231,235,0.6)]" />
           <div
@@ -344,7 +363,15 @@ const DesignConfigurator = ({
               )}
             </p>
             <Button
-              onClick={() => saveConfiguration()}
+              onClick={() =>
+                saveConfig({
+                  configId,
+                  color: options.color.value,
+                  finish: options.finish.value,
+                  material: options.materials.value,
+                  model: options.model.value,
+                })
+              }
               className="w-40"
               size="sm"
             >
