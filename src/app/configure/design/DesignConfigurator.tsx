@@ -18,7 +18,7 @@ import { RadioGroup } from "@headlessui/react";
 import { useMutation } from "@tanstack/react-query";
 import HandleComponent from "@/components/ui/HandleComponent";
 import { cn, formatPrice } from "@/lib/utils";
-import { COLOR, FINISH, MATERIAL, MODEL } from "@/validators/option-validator";
+import { COLORS, FINISH, MATERIAL, MODEL } from "@/validators/option-validator";
 import { saveConfig as _saveConfig, SaveConfigArgs } from "./actions";
 import { useUploadThing } from "@/lib/uploadthing";
 import { ArrowRight, CheckIcon, ChevronDownIcon } from "lucide-react";
@@ -57,13 +57,13 @@ const DesignConfigurator = ({
     },
   });
   const [options, setOptions] = useState<{
-    color: (typeof COLOR)[number];
+    color: (typeof COLORS)[number];
     model: (typeof MODEL.options)[number];
     materials: (typeof MATERIAL.options)[number];
     finish: (typeof FINISH.options)[number];
     template: string;
   }>({
-    color: COLOR[0],
+    color: COLORS[0],
     model: MODEL.options[0],
     materials: MATERIAL.options[0],
     finish: FINISH.options[0],
@@ -227,7 +227,7 @@ const DesignConfigurator = ({
                 >
                   <Label>Color: {options.color.label} </Label>
                   <div className="mt-3 flex items-center space-x-3">
-                    {COLOR.map((color) => (
+                    {COLORS.map((color) => (
                       <RadioGroup.Option
                         key={color.label}
                         value={color}
