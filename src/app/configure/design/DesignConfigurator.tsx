@@ -64,10 +64,10 @@ const DesignConfigurator = ({
     template: string;
   }>({
     color: COLORS[0],
-    model: MODEL.options[0],
+    model: MODEL.options[5],
     materials: MATERIAL.options[0],
     finish: FINISH.options[0],
-    template: MODEL.options[0].template,
+    template: MODEL.options[5].template,
   });
   const [renderedDimensions, setRenderedDimensions] = useState({
     width: imageDimensions.width / 4,
@@ -309,14 +309,14 @@ const DesignConfigurator = ({
                             value={option}
                             className={({ active, checked }) =>
                               cn(
-                                "relative flex cursor-pointer rounded-lg bg-white px-6 py-4 shadow-sm border-2 border-zinc-200 focus:outline-none sm:justify-between",
+                                "relative flex cursor-pointer rounded-lg bg-white px-6 py-4 shadow-sm border-2 border-zinc-200 focus:outline-none",
                                 {
                                   "border-primary": active || checked,
                                 }
                               )
                             }
                           >
-                            <div className="flex items-center">
+                            <div className="flex items-center justify-between w-full">
                               <div className="flex flex-col">
                                 <RadioGroup.Label
                                   as="span"
@@ -333,15 +333,15 @@ const DesignConfigurator = ({
                                   </RadioGroup.Description>
                                 )}
                               </div>
+                              <RadioGroup.Description
+                                as="span"
+                                className="flex text-sm sm:ml-4 sm:mt-0"
+                              >
+                                <span className="font-medium text-gray-900">
+                                  {formatPrice(option.price / 100)}
+                                </span>
+                              </RadioGroup.Description>
                             </div>
-                            <RadioGroup.Description
-                              as="span"
-                              className="mt-2 flex text-sm sm:ml-4 sm:mt-0 sm:flex-col sm:text-right"
-                            >
-                              <span className="font-medium text-gray-900">
-                                {formatPrice(option.price / 100)}
-                              </span>
-                            </RadioGroup.Description>
                           </RadioGroup.Option>
                         ))}
                       </div>

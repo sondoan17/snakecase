@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { cn } from "@/lib/utils";
 import React, { HTMLAttributes } from "react";
+import Image from "next/image";
 
 interface PhoneProps extends HTMLAttributes<HTMLDivElement> {
   imgSrc: string;
@@ -27,7 +28,12 @@ const Phone = ({ imgSrc, className, dark = false, ...props }: PhoneProps) => {
       />
 
       <div className="absolute -z-10 inset-0 min-w-full min-h-full">
-        <img src={imgSrc} alt="overlaying phone img" className="object-cover" />
+        <Image
+          src={imgSrc}
+          alt="overlaying phone img"
+          className="object-cover"
+          fill
+        />
       </div>
     </div>
   );

@@ -43,7 +43,7 @@ export const MODEL = {
     {
       label: "Iphone 11 Pro Max",
       value: "iphone11promax",
-      template: "/iphone-11-template.png",
+      template: "/iphone-11-prm-template.png",
     },
     {
       label: "Iphone 12/12 Pro",
