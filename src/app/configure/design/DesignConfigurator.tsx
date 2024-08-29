@@ -39,7 +39,9 @@ const DesignConfigurator = ({
   imageDimensions,
 }: DesignConfiguratorProps) => {
   const { toast } = useToast();
+
   const router = useRouter();
+
   const { mutate: saveConfig } = useMutation({
     mutationKey: ["save-config"],
     mutationFn: async (args: SaveConfigArgs) => {
@@ -56,6 +58,7 @@ const DesignConfigurator = ({
       router.push(`/configure/preview?id=${configId}`);
     },
   });
+
   const [options, setOptions] = useState<{
     color: (typeof COLORS)[number];
     model: (typeof MODEL.options)[number];
@@ -77,6 +80,8 @@ const DesignConfigurator = ({
     x: 150,
     y: 205,
   });
+  const [isLoading, setIsLoading] = useState(false);
+  const [loadingText, setLoadingText] = useState("Continue");
 
   const phoneCaseRef = useRef<HTMLImageElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -363,17 +368,24 @@ const DesignConfigurator = ({
               )}
             </p>
             <Button
-              onClick={() =>
-                saveConfig({
-                  configId,
-                  color: options.color.value,
-                  finish: options.finish.value,
-                  material: options.materials.value,
-                  model: options.model.value,
-                })
-              }
+              isLoading={isLoading}
+              loadingText={loadingText}
+              onClick={() => {
+                if (!isLoading) {
+                  setIsLoading(true);
+                  setLoadingText("Saving");
+                  saveConfig({
+                    configId,
+                    color: options.color.value,
+                    finish: options.finish.value,
+                    material: options.materials.value,
+                    model: options.model.value,
+                  });
+                }
+              }}
               className="w-40"
               size="sm"
+              disabled={isLoading}
             >
               Continue
               <ArrowRight className="h-4 w-4 ml-1.5" />
