@@ -45,7 +45,7 @@ const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
               <ol className="mt-3 text-zinc-700 list-disc list-inside">
                 <li>Durable and lightweight</li>
                 <li>TPU shock absorption</li>
-                <li>Packaging made from recycled materials</li>
+                <li>Packaging made from recycled materials </li>
                 <li>5-year warranty</li>
               </ol>
             </div>
@@ -94,10 +94,7 @@ const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
             </div>
 
             <div className="flex justify-end mt-8 pb-12">
-              <Button
-                
-                className="px-4 sm:px-6 lg:px-8"
-              >
+              <Button className="px-4 sm:px-6 lg:px-8">
                 Checkout <ArrowRight className="w-4 h-4 ml-1.5 inline" />
               </Button>
             </div>
